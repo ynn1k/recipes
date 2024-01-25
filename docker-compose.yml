@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=recipes
+      - POSTGRES_PASSWORD=RecipesPassword
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - '5444:5432'
+volumes:
+  postgres:

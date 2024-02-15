@@ -8,7 +8,9 @@ export class RecipesService {
   constructor(private readonly prisma: PrismaService) {}
 
   create(createRecipeDto: CreateRecipeDto) {
-    return 'This action adds a new recipe';
+    return this.prisma.recipe.create({
+      data: createRecipeDto,
+    });
   }
 
   findAll() {
@@ -16,7 +18,9 @@ export class RecipesService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} recipe`;
+    return this.prisma.recipe.findUnique({
+      where: { id },
+    });
   }
 
   update(id: number, updateRecipeDto: UpdateRecipeDto) {

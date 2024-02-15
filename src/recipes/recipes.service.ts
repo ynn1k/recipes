@@ -31,6 +31,8 @@ export class RecipesService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} recipe`;
+    return this.prisma.recipe.delete({
+      where: { id },
+    });
   }
 }
